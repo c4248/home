@@ -1,0 +1,180 @@
+body{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+rect {
+    fill: #204060;
+    opacity: .6;
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.main{
+    width: 800px;
+    position: absolute;
+    top: 30%;
+    left: 5%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    font-size: 40px;
+    font-family: LibreBaskerville;
+    color: #e1e9ea;
+    text-align: center;
+    align-items: center;
+
+    &_title{
+        font-size: 76px;
+        font-family: Vollkorn;
+        text-shadow: 7px 7px 6px #0f181a;
+    }
+    &_description {
+        font-size: 32px;
+        //font-family: LibreBaskerville;
+        margin-bottom: 1rem;
+        text-shadow: 5px 5px 6px #0f181a;
+    }
+    &_link{
+        // height: 20px;
+        overflow: visible;
+        width: 100%;
+        text-align: center;
+        font-size: 25px;
+        margin: .15rem 1.8rem;
+        border-radius: 4px;
+        padding: .6rem .7rem;
+        background-color: #253c412f;
+        box-shadow: 7px 7px 6px #0f181a;
+        border-bottom: 4px solid transparent;
+        &:hover{
+            transition-duration: 250ms;
+            cursor: pointer;
+            border-bottom: 4px solid #e1e9ea;
+        }
+    }
+    &_links {
+        width: 100%;
+        padding: 0 4rem;
+        font-size: 32px;
+        //font-family: LibreBaskerville;
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+
+.pie_path{
+    fill: #b4c0ce00;
+    stroke: #b4c0ce00;
+}
+
+//ABOUT CLICK ANIMATIONS
+
+
+
+@keyframes moveLeftToGone{
+    0%{
+        transform: translateX(0);
+        opacity: 1;
+    }
+    
+    15%{
+        transform: translateX(50px);
+        opacity: 1;
+    }
+
+    100%{
+        transform: translateX(-1000px);
+        opacity: 0;
+    }
+}
+
+
+@keyframes moveWayOutGone{
+    0%{
+        opacity: 1;
+    }
+    
+    100%{
+        opacity: 0;
+    }
+}
+
+.move_left_to_gone {
+    animation-name: moveLeftToGone;
+    animation-duration: 800ms;
+    animation-timing-function: cubic-bezier(.1,.28,0,1.02);
+    animation-fill-mode: forwards;
+}
+
+.move_way_out_gone {
+    animation-name: moveWayOutGone;
+    animation-duration: 800ms;
+    // animation-timing-function: cubic-bezier(1,.01,1,.97);
+    animation-fill-mode: forwards;
+}
+
+//ENTER HOME ANIMATIONS
+
+@keyframes enterToVisible{
+    0%{
+        opacity: 0;
+        transform: rotate3d(1,0,0,-90deg);
+    }
+
+    100%{
+        opacity: 1;
+        transform: rotate3d(0,0,0,0);
+    }
+}
+
+.mtitle_animate{
+    animation-name: enterToVisible;
+    animation-duration: 180ms;
+    animation-timing-function: cubic-bezier(1,0,1,1);
+    transform-origin: bottom;
+    
+}
+
+.mdescription_animate{
+    animation-name: enterToVisible;
+    animation-delay: 100ms;
+    animation-duration: 180ms;
+    animation-timing-function: cubic-bezier(1,0,1,1);
+    transform-origin: bottom;
+
+}
+
+.mlinks_animate{
+    animation-name: enterToVisible;
+    animation-delay: 200ms;
+    animation-duration: 180ms;
+    animation-timing-function: cubic-bezier(1,0,1,1);
+    transform-origin: bottom;
+}
+
+.no_opacity{
+    opacity: 0;
+}
+
+
+.path--background {
+    fill: none;
+    stroke: #204060;
+    stroke-width: 2px;
+}
+
+.field{
+    fill: #204060;
+    opacity: .6;
+}
+
+.label {
+    font: 210px Biryani;
+    fill: #204060;
+    text-anchor: middle;
+}

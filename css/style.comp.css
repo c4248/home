@@ -1,0 +1,9 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+.main {
+  margin: 3rem;
+  background-color: orangered;
+  height: 50%;
+  width: 80%; }

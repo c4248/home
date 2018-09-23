@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="nav">
+        <div class="hamburger" id="hamburger-9">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </div>
+        <div class="nav-nav" id="nav-nav">
+            <a href="/" onclick="homeClick(event)">HOME</a>
+            <a href="/about" onclick="aboutClick(event)">ABOUT</a>
+            <a href="/about">FULLSTACK</a>
+        </div>
+    </div>
+
+    
+    <div class="chart-div" id="salary">
+        <h3 class="salary-chart-title">MEDIAN STARTING SALARY FOR DEGREES IN STEM</h3>
+        <div class="borderbot borderbot-margin"></div>
+        <div class="salary-chart">
+            <div class="salary-description">
+                <p>Engineering starting salaries tend to be paid more than Sciences. <br> <br>
+                    Data is provided from the <a href="https://www.kaggle.com/wsj/college-salaries">Wall Street Journal via kaggle </a><br><br>
+                    bl.ocks gist is provided <a href="https://bl.ocks.org/c4248/672eb7d7a622939cee2286f23065139d">here</a><br><br>
+                </p>
+                <label>
+                    <input class="checkbox"type="checkbox" id="input">
+                    <div class="hvr-bubble-right">
+                        <span id="sort-text-button">SORT BY SALARIES</span>
+                    </div>
+                </label>
+            </div>
+            <div class="salary-line-chart" id="chart">
+
+            </div>
+        </div>
+    </div>
+    <div class="chart-div" id="pie">
+        <h3 class="pie-chart-title">DEMOGRAPHICS OF STANFORD</h3>
+        <div class="borderbottwo"></div>
+        <div class="pie-chart">
+            <div class="pie-chart-div">
+                <svg class="pie-line-chart" id="pie-content">
+                    
+                </svg>
+            </div> 
+            <div class="pie-description">
+                <p>
+                    One can infer more meta data by looking at the data itself. For example, an individual might ask whether or not Stanford takes affirmative action and a diverse approach with its student selection. <br><br>
+                    It is the job of the data visualist to represent the data as unbiased while making the quality of being infer-able high. 
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="chart-div" id="line">
+        <h3 class="line-chart-title">WEATHER LINE GRAPH </h3>
+        <div class="borderbottwo"></div>
+        <div class="line-content">
+            <div class="pie-description">
+                <p> Data is from the Global Historical Climatology Network from their station Petersburg 2. <br><br>
+                    How their temperature is represented is undefined, but still correlates to average temperatures of majority of areas in the northern hemisphere through the months and is given by variable name TMAX <br><br>
+                    Dataset was chosen because of how suitable it was for line graphs. <br><br>
+                    Data was given from <a href="http://www.noaa.gov/">here</a> 
+                </p>
+            </div>
+            <div class="lineflex">
+                <svg class="line-graph" id="line-content">
+
+                </svg>
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="chart-div" id="usa">
+        <h3 class="line-chart-title">MASS SHOOTINGS IN THE US 2010-2017</h3>
+        <div class="borderbottwo"></div>
+
+        <div class="map-content">
+            <div class="hover-div"><p>Hover over an incident</p></div>
+            <div class="map-div" id="map-div">         
+            </div>
+            <div class="map-description"></div> 
+        </div>
+    </div>
+    <script src="d3.min.js"></script>
+    <script src="d3-tip.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>

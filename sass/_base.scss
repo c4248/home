@@ -1,0 +1,95 @@
+@font-face{
+    font-family: brGrotesque;
+    src: url(../fonts/brandon.otf);
+}
+
+@font-face {
+    font-family: Biryani;
+    src: url(../fonts/Biryani/Biryani-Regular.ttf);
+}
+
+@font-face {
+    font-family: Ubuntu;
+    src: url(../fonts/ubuntu.ttf);
+}
+
+@font-face {
+    font-family: AlegreyaSans;
+    src: url(../fonts/AlegreyaSans.ttf);
+}
+
+@font-face {
+    font-family: Ramabhadra;
+    src: url(../fonts/Ramabhadra.ttf);
+}
+
+@font-face {
+    font-family: LibreBaskerville;
+    src: url(../fonts/LibreBaskerville.ttf);
+}
+
+@font-face{
+    font-family: Vollkorn;
+    src: url(../fonts/Vollkorn.ttf)
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+*, 
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Ubuntu;
+    background-color: #0f181a;//linear-gradient(to bottom, #141E30,#243B55);
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    font-size: 1.3rem;
+}
+
+h1 {
+    font-family: brGrotesque;
+    text-transform: uppercase;
+    color: #151d1e;
+    font-size: 3.5rem;
+}
+
+h3 {
+    font-family: brGrotesque;
+    text-transform: uppercase;
+    color: #151d1e;
+    font-size: 2.5rem;
+}
+
+a{
+    color: #151d1e;
+    text-decoration: none;
+
+    &:hover{
+        text-decoration: underline;
+    }
+}
+
+
+text{
+    font-size: 1rem;
+    fill: #151d1e;
+}
+
+p {
+    color: #151d1e;
+}
+
+a{
+    outline: none;
+}

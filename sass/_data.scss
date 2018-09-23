@@ -1,0 +1,254 @@
+.salary-chart {
+    display: flex;
+    width: 100%;
+    height: 60vh;
+    min-height: 460px;
+
+    &-title{
+        animation-name: moveFromBottom;
+        animation-duration: 650ms;
+        animation-timing-function: ease-out;
+    }
+
+    animation: moveFromBottom 650ms 400ms both;
+    animation-timing-function: ease-out;
+}
+
+.pie-chart {
+    animation: moveFromBottom 650ms 800ms both;
+    animation-timing-function: ease-out;
+    width: 100%;
+    display: flex;
+    height: 45vh;
+    min-height: 340px;
+    overflow: visible;
+
+    &-title {
+        animation: moveFromBottom 650ms 500ms both;
+        animation-timing-function: ease-out;
+    }
+}
+
+.map-content{
+    display: flex;
+    // height: 50vh;
+    flex-direction: column;
+    position: relative;
+}
+
+.map-description {
+    flex: 1;
+    height: 200px;
+    min-height: 200px;
+    max-height: 200px;
+}
+
+.map-div {
+    flex: 1;
+}
+
+.line-content{
+    display: flex;
+}
+.lineflex {
+    flex: 0 0 70%;
+    height: 50vh;
+    max-height: 380px;
+}
+
+.line-graph {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.salary-description {
+    flex: 0 0 25%;
+}
+
+.salary-line-chart {
+    height: 100%;
+    min-width: 35rem;
+    min-height: 30rem;
+    flex: 1;
+}
+
+.pie-line-chart {
+    height: 100%;
+    padding-top: 1rem;
+    width: 100%;
+    overflow: visible;
+}
+
+.pie-chart-div {
+    height: 100%;
+    flex: 0 0 70%;
+}
+
+.pie-description{
+    flex: 0 0 30%;
+}
+
+.sortlabel{
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .checkbox{
+    display: none;
+  }
+  
+  .hvr-bubble-right {
+    font-family: brGrotesque;
+    font-size: 1.5rem;
+    text-align: center;
+    background-color: #ffbd84;
+    width: 100%;
+    min-height: 2.8rem;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    cursor: pointer;
+    padding: .4rem 0;
+    border: 3px solid #ffbd84;
+    border-radius: 5px;
+    transition: all 150ms;
+
+    &:hover {
+        background-color: #243B55;
+        color: #fff;
+    }
+  }
+
+  .d3-tip {
+      background-color: rgba(28,47,68,0.85);
+      transition: all 250ms;
+      padding: 10px;
+      font-size: 1.1rem;
+      text-align: center;
+      min-width: 200px;
+  }
+
+
+  .bar {
+      fill: #ffbd84;
+      opacity: .85;
+      transition: opacity 250ms;
+
+      &:hover{
+          opacity: 1;
+      }
+  }
+
+  .axis path,
+  .axis line {
+      fill: none;
+      stroke: #fff;
+      shape-rendering: crispEdges;
+  }
+
+  .grid line {
+      stroke: #fff;
+      stroke-opacity: 0.7;
+      shape-rendering: crispEdges;
+  }
+
+  .x.axis path {
+      display: none;
+  }
+
+  .chart-div{
+      margin-bottom: 2rem;
+  }
+
+  polyline{
+    opacity: 1;
+    stroke: #f6f6f6;
+    stroke-width: 3px;
+    fill: none;
+}
+.arc {
+    transition: all 250ms;
+}
+
+.arc:hover {
+    transform: scale(1.1);
+}
+
+.arc path {
+    stroke: rgb(255, 255, 255);
+  }
+
+  .overlay {
+    fill: none;
+    pointer-events: all;
+  }
+  
+  .focus circle {
+    fill: #fff;
+    stroke: #ffbd84;
+    stroke-width: 5px;
+  }
+    
+  .hover-line {
+    stroke: #fff;
+    stroke-width: 2px;
+    stroke-dasharray: 3,3;
+  
+  }
+  
+  .text-box{
+      stroke-width: 0px;
+      fill: #fff;
+      font-size: 20px
+      
+  }
+  
+  .line-path{
+      stroke-width: 3px;
+      fill:none;
+  }
+
+
+  div.tooltip {   
+    position: absolute;    
+    color: #fff;       
+    text-align: center;                           
+    padding: 5px;             
+    font-size: 20px;        
+    background: #1c2f44; 
+    opacity: .8;  
+    border-radius: 4px;
+    border: 0px;                
+    pointer-events: none;    
+    z-index: 100;     
+  }
+
+.nav {
+    position: fixed;
+    top: 4rem;
+    left: 2rem;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.nav-nav{
+    padding-left: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(-4rem);
+    opacity: 0;
+    transition: all .4s;
+
+    a:not(:last-child){
+        padding-bottom: 20px;
+    }
+}
+
+.nav-nav-display {
+    transition: all .4s;
+    opacity: 1;
+    transform: translateX(0);
+}
