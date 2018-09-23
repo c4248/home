@@ -120,8 +120,8 @@ body {
   position: relative; }
 
 rect {
-  fill: #204060;
-  opacity: .6; }
+  fill: #006699;
+  opacity: .7; }
   rect:hover {
     opacity: 1; }
 
@@ -134,33 +134,37 @@ rect {
   display: flex;
   flex-direction: column;
   font-size: 40px;
-  font-family: LibreBaskerville;
-  color: #e1e9ea;
+  font-family: Ramabhadra;
+  color: #dfeaec;
   text-align: center;
-  align-items: center; }
+  align-items: center;
+  user-select: none; }
   .main_title {
     font-size: 76px;
-    font-family: Vollkorn;
-    text-shadow: 7px 7px 6px #0f181a; }
+    font-family: Ramabhadra;
+    text-shadow: 4px 4px 6px #0f181a;
+    height: 100px; }
   .main_description {
     font-size: 32px;
-    margin-bottom: 1rem;
-    text-shadow: 5px 5px 6px #0f181a; }
+    text-shadow: 4px 4px 6px #0f181a; }
   .main_link {
     overflow: visible;
     width: 100%;
     text-align: center;
     font-size: 25px;
-    margin: .15rem 1.8rem;
+    margin: .15rem 1rem;
     border-radius: 4px;
-    padding: .6rem .7rem;
+    padding: 0 .4rem;
     background-color: #253c412f;
-    box-shadow: 7px 7px 6px #0f181a;
-    border-bottom: 4px solid transparent; }
+    box-shadow: 4px 4px 6px #0f181a;
+    border: 3px solid transparent; }
     .main_link:hover {
-      transition-duration: 250ms;
+      transition-duration: 150ms;
       cursor: pointer;
-      border-bottom: 4px solid #e1e9ea; }
+      border: 3px solid; }
+    .main_link:active {
+      transform: translate(5px, 5px);
+      box-shadow: 0px 0px 6px #0f181a; }
   .main_links {
     width: 100%;
     padding: 0 4rem;
@@ -169,8 +173,8 @@ rect {
     justify-content: space-between; }
 
 .pie_path {
-  fill: #b4c0ce00;
-  stroke: #b4c0ce00; }
+  fill: #476b6b00;
+  stroke: #476b6b00; }
 
 @keyframes moveLeftToGone {
   0% {
@@ -233,16 +237,20 @@ rect {
 
 .path--background {
   fill: none;
-  stroke: #204060;
+  stroke: #cc7a00;
   stroke-width: 2px; }
 
 .field {
-  fill: #204060;
-  opacity: .6; }
+  fill: #cc7a00;
+  opacity: .75; }
+
+.field:hover {
+  opacity: 1;
+  transition-duration: 250ms; }
 
 .label {
   font: 210px Biryani;
-  fill: #204060;
+  fill: #cc7a00;
   text-anchor: middle; }
 
 .salary-chart {
@@ -480,7 +488,7 @@ div.tooltip {
   z-index: -5; }
 
 .area {
-  stroke: #997300;
+  stroke: #669999;
   stroke-width: 15;
   stroke-linecap: round;
   fill: none; }

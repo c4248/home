@@ -190,10 +190,10 @@ drawOnce = () => {
     setTimeout(()=>{
         clearInterval(interval)
         undrawPie()
-    },17000)
+    },18000)
 }
 drawOnce()
 
 setInterval(()=>{
     drawOnce()
-}, 17500)
+}, 19000)
