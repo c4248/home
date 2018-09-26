@@ -32,27 +32,30 @@ rect {
         font-size: 76px;
         font-family: Ramabhadra;
         text-shadow: 4px 4px 6px #0f181a;
-        height: 100px;
-        
+        height: 100px;   
     }
+
     &_description {
         font-size: 32px;
         //font-family: LibreBaskerville;
         // margin-bottom: 1rem;
         text-shadow: 4px 4px 6px #0f181a;
     }
+    
     &_link{
         overflow: visible;
         width: 100%;
         text-align: center;
         font-size: 25px;
-        margin: .15rem 1rem;
         border-radius: 4px;
-        padding: 0 .4rem;
-        background-color: #253c412f;
+        margin-right: 1.2rem;
+        background-color: #fa837f86;
         box-shadow: 4px 4px 6px #0f181a;
         border: 3px solid transparent;
-        
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        font-family: Ramabhadra;
         
         &:hover{
             transition-duration: 150ms;
@@ -67,7 +70,6 @@ rect {
     }
     &_links {
         width: 100%;
-        padding: 0 4rem;
         font-size: 32px;
         //font-family: LibreBaskerville;
         display: flex;
@@ -169,7 +171,6 @@ rect {
 .no_opacity{
     opacity: 0;
 }
-
 
 .path--background {
     fill: none;

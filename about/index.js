@@ -1,5 +1,5 @@
 const str_list = [   
-    "Spent a decent amount of time with CSS on xanga",
+    "Spent a decent amount of time with CSS on Xanga",
     "Fell in love with Ubuntu", 
     "Spent some time with HTML/CSS/JS, but even more with Flash :(",
     "I did some cool things with Flash like decompiling .swf sites to .fla and unlocking internals to some big sites.",
@@ -9,7 +9,7 @@ const str_list = [
     "Dropped out",
     "Did some arduino projects with LEDs and motors",
     "Built a gallery with HTML/CSS/JS and JQuery for animations",
-    "Built monolithic applications with Django where I also touched Redis and Celery",
+    "Built monolithic applications with Django where I also touched Redis and Celery for daily automated tasks",
     "Learned Angular 1.5 with Django REST Framework",
     "React and Redux, SASS, ESLint, responsive design, CSS transitions and animations, Heroku",
     "Next.js, Jest, redux-saga, flask-restful, SQLAlchemy, Postgres, system design, Firebase, Digital Ocean",
@@ -22,17 +22,17 @@ setTimeout(()=>{
 },1000)
 
 const points = [
-    82, 71, 65,
+    52, 55, 65,
     66, 52, 58,
     61, 44, 31,
     28, 27, 17,
     25, 18, 19,
-    20, 25, 28,
-    30, 32, 35,
-    40, 41, 35,
-    41, 40, 48,
-    52, 57, 48,
-    50, 58, 60,
+    20, 15, 12,
+    7, 9, 11,
+    22, 15, 25,
+    30, 32, 37,
+    41, 48, 45,
+    42, 58, 60,
     72, 60, 50,
     55, 61, 73,
     80, 81, 82
@@ -97,7 +97,7 @@ function tweenBackDash() {
 var path = svg.append("path")
 
 var t = d3.transition()
-    .duration(500)
+    .duration(800)
     .ease(d3.easeExpInOut)
 
 draw = (data, isForward) => {
@@ -170,7 +170,6 @@ window.addEventListener('wheel', e=>{
     }
     if(e.deltaY>0){
         if(scrollPlacement < str_list.length-1){
-            
             document.getElementById("f-top").classList.add('animate_up_to_gone')
             document.getElementById("f-mid").classList.add('animate_up_to_black')
             scrollPlacement != str_list.length-1 && document.getElementById("f-bot").classList.add('animate_up_to_white')
@@ -179,9 +178,13 @@ window.addEventListener('wheel', e=>{
             document.getElementById("age-number").innerHTML = age
             counter++;
             pointsToDraw = points.slice(0, counter*3)
-            draw(pointsToDraw, true)           
+            draw(pointsToDraw, true)    
+            if(scrollPlacement==1){
+                document.getElementById('end_button').classList.add('enter_visible')
+                document.getElementById('end_button').classList.remove('no_opacity')
+            }       
         }
-        if(scrollPlacement === str_list.length-1) {
+        else {
             document.getElementById('fcontainer').classList.add('animate_up_to_gone')
             document.getElementById('age').classList.add('animate_up_to_gone')
             scrollPlacement++
@@ -226,3 +229,19 @@ window.addEventListener('wheel', e=>{
 
 
 
+goToEnd = () =>{
+    document.getElementById('fcontainer').classList.add('animate_up_to_gone')
+    document.getElementById('age').classList.add('animate_up_to_gone')
+    document.getElementById('end_button').classList.add('animate_up_to_gone')
+    scrollPlacement = 14;
+    counter = 14;
+    age = 26;
+    draw(points, true)
+}
+
+let fullLinks = document.getElementsByClassName('main_link')
+console.log(fullLinks)
+
+let linkCounter = 0
+
+document.getElementById('end_button').classList.add('no_opacity')
