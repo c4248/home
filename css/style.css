@@ -669,6 +669,9 @@ div.tooltip {
   font-size: 25px;
   width: 1500px; }
 
+.yes_opacity {
+  opacity: 1; }
+
 .wrapper {
   margin: 3em 0; }
 
@@ -788,3 +791,22 @@ a.before:hover:before, a.after:hover:after {
 
 .square:hover a:before, .square:hover a:after {
   width: 100%; }
+
+.water {
+  background-color: #0f181a; }
+
+.states {
+  fill: #131e20;
+  stroke-width: .3px;
+  stroke: #5d95a2; }
+
+.state-borders {
+  fill: none;
+  stroke: #bed5da;
+  stroke-width: 2px; }
+
+.city-circle {
+  fill: #e31a1c; }
+
+.city-text {
+  fill: #000; }

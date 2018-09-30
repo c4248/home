@@ -181,7 +181,7 @@ window.addEventListener('wheel', e=>{
             draw(pointsToDraw, true)    
             if(scrollPlacement==1){
                 document.getElementById('end_button').classList.add('enter_visible')
-                document.getElementById('end_button').classList.remove('no_opacity')
+                document.getElementById('end_button').classList.add('yes_opacity')
             }       
         }
         else {

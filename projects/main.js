@@ -33,17 +33,17 @@ const cities = [
 const width = window.innerWidth
 const height = window.innerHeight
 
-let city
-let index = 0 
+let city, lnglat
+let index = 0
 
 const svg = d3.select('svg').append('g')
-const projection = d3.geoMercator();
+const projection = d3.geoMercator()
 
 const path = d3.geoPath()
-    .projection(projection);
+    .projection(projection)
 
 const zoomed = () => {
-    svg.attr('transform', `translate(${d3.event.transform.x}, ${d3.event.transform.y}) scale(${d3.event.transform.k}, ${d3.event.transform.k})`);
+    svg.attr('transform', `translate(${d3.event.transform.x}, ${d3.event.transform.y}) scale(${d3.event.transform.k}, ${d3.event.transform.k})`)
 }
 
 const transform = () => {
@@ -56,91 +56,83 @@ const transform = () => {
         "properties": {
             "name": "Dinagat Islands"
         }
-    }
+    };
 
     const centroid = path.centroid(cityPoint)
     const x = width / 2 - centroid[0]
-    const y = height /2 - centroid[1]
+    const y = height / 2 - centroid[1]
 
     return d3.zoomIdentity
-        .translate(x, y)
+        .translate(x-(width*.4),y-(height*.2))
 }
 
-const transition = () => {
-    index++;
+const transition = (isDown) => {
+
+    if(isDown){
+        index++
+    }else {
+        index--
+        if(index < 0){
+            index = cities.length-1
+        }
+    }
+    console.log(index)
+
     index = index % cities.length
 
+
     city = cities[index]
+
     svg.transition()
-        .delay(500)
-        .duration(3000)
+        .duration(1500)
         .call(zoom.transform, transform)
-        .on('end', () => {svg.call(transition) })
+        // .on('end', ()=>svg.call(transition))
 }
 
 const zoom = d3.zoom()
     .on('zoom', zoomed)
 
 const drawChart = (data) => {
-    // cities = data[0].filter( d=>{
-    //     return CITIES.indexOf(d.PlaceName) !== -1
-    // })
-    // .map( d => {
-    //     const lnglat = d.Geolocation.replace(/[\(\)\s]/g, '').split(',').map(d => +d).reverse()
+    city = cities[index]
 
-    //     return {
-    //         stateAbbr: d.StateAbbr,
-    //         placeName: d.PlaceName,
-    //         lng: lnglat[0],
-    //         lat: lnglat[1],
-    //         lnglat: lnglat
-    //     }
-    // })
-
-    // city = cities[index]
-
-    const us = data[0]
-    const center = [cities[0].long, cities[1].lat]
-
-    svg.call(transition)
+    const center = [cities[0].long, cities[0].lat]
 
     projection
         .scale(7000)
         .center(center)
 
     svg.append('g')
-        .attr('class', 'counties')
+        .attr('class', 'states')
         .selectAll('path')
-        .data(topojson.feature(us, us.objects.counties).features)
+        .data(topojson.feature(data, data.objects.counties).features)
         .enter().append('path')
         .attr('d', path)
 
     svg.append('path')
         .attr('class', 'state-borders')
-        .attr('d', path(topojson.mesh(us, us.objects.counties, (a, b) => a !== b )))
+        .attr('d', path(topojson.mesh(data, data.objects.states, (a,b)=> a!==b)))
 
     const point = svg.selectAll('.city')
         .data(cities).enter()
         .append('g')
         .classed('city', true)
-        .attr('transform', d=> {
-            let location = [d.long, d.lat]
-            console.log(projection(location))
-            return `translate(${projection(location)[0]}, ${projection(location)[1]})`
-        })
+        .attr('transform', d=>`translate(${projection([d.long,d.lat])[0]}, ${projection([d.long,d.lat])[1]})`)
 
     point.append('circle')
         .classed('city-circle', true)
-        .attr('r', '.8px')
+        .attr('r', '10px')
 
-    // point.append('text')
-    //     .classed('city-text', true)
-    //     .text(d => d.placeName)
+    // svg.append('path')
+    //     .attr('class', 'state-borders')
+    //     .attr('d', path(topojson.mesh(data, data.objects.nation, (a,b)=> a!==b)))
 }
 
-const mapRequest = d3.json('us.json');
 
-Promise.all([mapRequest])
+// const citiesRequest = d3.csv('us_cities.csv');
+const mapRequest = d3.json('us.json')
+
+// Promise.all([citiesRequest, mapRequest])
+mapRequest
 .then( result => {
     drawChart(result);
 })
@@ -148,3 +140,21 @@ Promise.all([mapRequest])
     throw (error);
 });
 
+
+let callIsReady = true
+
+window.addEventListener('wheel', e=>{
+
+    if(e.deltaY>0 && callIsReady){
+        svg.call(()=>transition(true))
+    }
+
+    else if(e.deltaY <0 && callIsReady){
+        svg.call(()=>transition(false))
+    }
+
+    callIsReady = false
+    setTimeout(()=>{
+        callIsReady = true
+    },1000)
+})

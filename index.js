@@ -80,6 +80,9 @@ draw = () => {
 let fields = [
     {value: 12, size: 12, label: "h", update: function(date) { 
         let hour = date.getHours();
+        if (hour == 0){
+            return 12
+        }
         if (hour > 12) {
             return hour - 12
         }
