@@ -2,38 +2,43 @@ const cities = [
     {
         city: "Irvine",
         state: "CA",
-        lat: 33.67801089040,
-        long: -117.773633283
+        lat: 33.67801,
+        long: -117.77363,
+        population: "POP: 266,122 "
     },
     {
         city: "Bellevue",
         state: "WA",
-        lat: 47.59624376060,
-        long: -122.153569982
+        lat: 47.59624,
+        long: -122.15356,
+        population: "POP: 141,400"
     },
     {
         city: "Mountain View",
         state: "CA",
-        lat: 37.39992523790,
-        long: -122.079544343
+        lat: 37.39992,
+        long: -122.07954,
+        population: "POP: 80,447"
     },
     {
         city: "Plano",
         state: "TX",
-        lat: 33.05021492780,
-        long: -96.7486409797
+        lat: 33.05021,
+        long: -96.74864,
+        population: "POP: 279,088"
     },
     {
         city: "Jersey City",
         state: "NJ",
-        lat: 40.71881308520,
-        long: -74.0687740635
+        lat: 40.71881,
+        long: -74.06877,
+        population: "POP: 264,152"
     }
 ]
 const width = window.innerWidth
 const height = window.innerHeight
 
-let city, lnglat
+let city, lnglat, point, cityForDeanimate
 let index = 0
 
 const svg = d3.select('svg').append('g')
@@ -59,15 +64,15 @@ const transform = () => {
     };
 
     const centroid = path.centroid(cityPoint)
-    const x = width / 2 - centroid[0]
-    const y = height / 2 - centroid[1]
+    const x = width / 2 - centroid[0] - width*.4
+    const y = height / 2 - centroid[1] - height*.3
 
     return d3.zoomIdentity
-        .translate(x-(width*.4),y-(height*.2))
+        // .translate(x-(width*.4),y-(height*.2))
+        .translate(x,y)
 }
 
 const transition = (isDown) => {
-
     if(isDown){
         index++
     }else {
@@ -76,17 +81,18 @@ const transition = (isDown) => {
             index = cities.length-1
         }
     }
-    console.log(index)
 
     index = index % cities.length
-
-
+    cityForDeanimate = city.city
+    setTimeout(()=>deanimateText(cityForDeanimate),1000)
+    
     city = cities[index]
 
     svg.transition()
         .duration(1500)
         .call(zoom.transform, transform)
-        // .on('end', ()=>svg.call(transition))
+        .transition()
+        .on('start', animateText)
 }
 
 const zoom = d3.zoom()
@@ -94,12 +100,13 @@ const zoom = d3.zoom()
 
 const drawChart = (data) => {
     city = cities[index]
+    cityForDeanimate = city.city
 
-    const center = [cities[0].long, cities[0].lat]
-
+    const center = [cities[index].long, cities[index].lat]
     projection
         .scale(7000)
         .center(center)
+        .translate([width/2-width*.4, height/2-height*.3])
 
     svg.append('g')
         .attr('class', 'states')
@@ -125,6 +132,60 @@ const drawChart = (data) => {
     // svg.append('path')
     //     .attr('class', 'state-borders')
     //     .attr('d', path(topojson.mesh(data, data.objects.nation, (a,b)=> a!==b)))
+    point.append('text')
+        .attr('class', "city-text")
+        .attr('id', d=>"city-text"+d.city)
+
+    point.append('text')
+        .classed('detail-text', true)
+        .attr('id', d=>"details"+d.city)
+
+    point.append('text')
+        .classed('detail-lat', true)
+        .attr('id', d=>"lat"+d.city)
+
+    point.append('text')
+        .classed('detail-long', true)
+        .attr('id', d=>"long"+d.city)
+
+    point.append('div')
+        .classed('typer', true)
+    animateText()
+}
+
+const animateText = () => {
+    let cityName = `${city.city}, ${city.state}`.toUpperCase().split('')
+    theCity = city
+    latCity = "LAT: "+ theCity.lat
+    longCity = "LONG: "+ theCity.long
+
+    cityName.map((d,i)=>{
+        setTimeout(()=>{
+            document.getElementById(`city-text${theCity.city}`).innerHTML +=d
+        }, i*130)
+    })    
+    theCity.population.split("").map((d,i)=>{
+        setTimeout(()=>{
+            document.getElementById(`details${theCity.city}`).innerHTML +=d
+        }, i*75)
+    })
+    latCity.split("").map((d,i)=>{
+        setTimeout(()=>{
+            document.getElementById(`lat${theCity.city}`).innerHTML +=d
+        }, i*100)
+    })
+    longCity.split("").map((d,i)=>{
+        setTimeout(()=>{
+            document.getElementById(`long${theCity.city}`).innerHTML +=d
+        }, i*80)
+    })
+}
+
+const deanimateText = (cityDe) => {
+    document.getElementById(`city-text${cityDe}`).innerHTML = ''
+    document.getElementById(`details${cityDe}`).innerHTML = ""
+    document.getElementById(`lat${cityDe}`).innerHTML = ''
+    document.getElementById(`long${cityDe}`).innerHTML = ''
 }
 
 
@@ -156,5 +217,5 @@ window.addEventListener('wheel', e=>{
     callIsReady = false
     setTimeout(()=>{
         callIsReady = true
-    },1000)
+    },1300)
 })

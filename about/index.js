@@ -4,7 +4,7 @@ const str_list = [
     "Spent some time with HTML/CSS/JS, but even more with Flash :(",
     "I did some cool things with Flash like decompiling .swf sites to .fla and unlocking internals to some big sites.",
     "Used BackTrack 2 and 3 (now known as Kali Linux) to find hidden SSIDs, and crack WEP passwords.",
-    "Took APCS1, HCS2, and participated in CS club in high school (Java)",
+    "Took APCS1, HCS2(Algorithms), and participated in CS club in high school (Java)",
     "Enrolled for Computer Science @ University of Texas @ Dallas",
     "Dropped out",
     "Did some arduino projects with LEDs and motors",
@@ -13,7 +13,7 @@ const str_list = [
     "Learned Angular 1.5 with Django REST Framework",
     "React and Redux, SASS, ESLint, responsive design, CSS transitions and animations, Heroku",
     "Next.js, Jest, redux-saga, flask-restful, SQLAlchemy, Postgres, system design, Firebase, Digital Ocean",
-    "Authentication - JWT, Salting and Hashing, and d3"
+    "Authentication - JWT, salting and hashing, and a lot of d3"
 ]
 
 setTimeout(()=>{
@@ -224,10 +224,6 @@ window.addEventListener('wheel', e=>{
     }, 280)
     setTimeout(()=>{timeout = false}, 500)    
 })  
-
-
-
-
 
 goToEnd = () =>{
     document.getElementById('fcontainer').classList.add('animate_up_to_gone')
